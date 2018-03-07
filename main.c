@@ -3,25 +3,15 @@
 int		deal_key(int key, t_fdf_lst *param)
 {
 	mlx_pixel_put(param->mlx_ptr, param->win_ptr, param->i, param->j, 0xFFFFFF);
-	if (key == 123)
+	while (param->j < 500)
 	{
-		param->i--;
-		mlx_pixel_put(param->mlx_ptr, param->win_ptr, param->i, param->j, 0xFFFFFF);
-	}
-	if (key == 124)
-	{
-		param->i++;
-		mlx_pixel_put(param->mlx_ptr, param->win_ptr, param->i, param->j, 0xFFFFFF);
-	}
-	if (key == 125)
-	{
+		param->i = 0;
+		while (param->i < 500)
+		{
+			mlx_pixel_put(param->mlx_ptr, param->win_ptr, param->i, param->j, (0xFFFFFF + key));
+			param->i++;
+		}
 		param->j++;
-		mlx_pixel_put(param->mlx_ptr, param->win_ptr, param->i, param->j, 0xFFFFFF);
-	}
-	if (key == 126)
-	{
-		param->j--;
-		mlx_pixel_put(param->mlx_ptr, param->win_ptr, param->i, param->j, 0xFFFFFF);
 	}
 	return (0);
 }
