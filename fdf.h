@@ -6,7 +6,7 @@
 # include "../libft/libft.h"
 # include <fcntl.h>
 # include <unistd.h>
-# include <mlx.h>
+# include "./mlx/mlx.h"
 
 typedef struct			s_fdf_lst
 {

@@ -6,7 +6,7 @@
 #    By: tlevaufr <tlevaufr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/07 14:10:22 by tlevaufr          #+#    #+#              #
-#    Updated: 2018/03/07 15:32:00 by tlevaufr         ###   ########.fr        #
+#    Updated: 2018/03/21 18:09:07 by tlevaufr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,10 +33,11 @@ FRAMEWORKS = -framework AppKit -framework OpenGL
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	@make -C ./mlx/
 	@make -C ../libft/
 	@echo "\033[0m"
 	@$(CC) $(CFLAGS) -I ../libft/ -c $(SRC)
-	@$(CC) -o $(NAME) $(OBJ) -lm -L ../libft/ -lft -lmlx $(FRAMEWORKS)
+	@$(CC) -o $(NAME) $(OBJ) -lm -L ./mlx/ -L ../libft/ -lft -lmlx $(FRAMEWORKS)
 	@echo "\033[1;5;1;36m";
 	@echo "$(_RED)+------------------------+";
 	@echo "|  $(_GREEN)______ _____  ______  $(_RED)|";
@@ -51,9 +52,11 @@ $(NAME): $(OBJ)
 
 clean:
 	make -C ../libft/ clean
+	make -C ./mlx/ clean
 	rm -f $(OBJ)
 
 fclean: clean
+	make -C ./mlx/ clean
 	make -C ../libft/ fclean
 	rm -f $(NAME)
 
